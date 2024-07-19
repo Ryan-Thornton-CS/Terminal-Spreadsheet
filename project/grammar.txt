@@ -1,0 +1,58 @@
+Lowest level is the highest precedence.
+
+block = expression
+
+expression = logical
+
+logical = logical && relation
+        | logical || relation
+        | relation
+
+relation = relation < bitwise
+         | relation > bitwise
+         | relation <= bitwise
+         | relation >= bitwise
+         | relation == bitwise
+         | relation != bitwise
+         | bitwise
+
+bitwise = bitwise & addsub
+        | bitwise | addsub
+        | bitwise ^ addsub
+        | bitwise << addsub
+        | bitwise >> addsub
+        | addsub
+
+addsub = addsub + mod
+       | addsub - mod
+       | mod
+
+mod = mod % div
+    | div
+
+div = div / mult
+    | mult
+
+mult = mult * exp
+     | exp
+
+exp = unary ** exp
+    | unary
+
+unary = ! unary
+      | ~ unary
+      | unit
+
+unit = MIN(unit, unit)
+     | MAX(unit, unit)
+     | MEAN(unit, unit)
+     | SUM(unit, unit)
+     | [unit, unit]
+     | #[expression, expression]
+     | FLOAT(unit)
+     | INT(unit)
+     | FLOAT
+     | INT
+     | (expression)
+     | expression
+     | block
